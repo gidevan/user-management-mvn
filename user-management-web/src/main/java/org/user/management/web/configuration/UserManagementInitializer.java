@@ -1,6 +1,7 @@
 package org.user.management.web.configuration;
 
 import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -18,7 +19,10 @@ public class UserManagementInitializer implements WebApplicationInitializer {
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
         ctx.register(UserManagementConfiguration.class);
         ctx.setServletContext(servletContext);
-        ServletRegistration.Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet());
+        servletContext.addListener(new ContextLoaderListener(ctx));
+        DispatcherServlet dispatcherServlet = new DispatcherServlet();
+        dispatcherServlet.setContextClass(AnnotationConfigWebApplicationContext.class);
+        ServletRegistration.Dynamic servlet = servletContext.addServlet("dispatcher", dispatcherServlet);
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
     }
