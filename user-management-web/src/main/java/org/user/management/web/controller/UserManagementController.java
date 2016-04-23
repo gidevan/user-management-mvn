@@ -11,4 +11,9 @@ public class UserManagementController {
     public String hello() {
         return "hello";
     }
+
+    @RequestMapping("/login")
+    public String login()  {
+        return "login";
+    }
 }

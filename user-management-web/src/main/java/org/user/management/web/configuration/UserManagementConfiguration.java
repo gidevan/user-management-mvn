@@ -21,4 +21,5 @@ public class UserManagementConfiguration {
         resolver.setSuffix(".jsp");
         return resolver;
     }
+
 }
