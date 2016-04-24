@@ -10,4 +10,6 @@ public interface UserInfo {
     void setUserName(String userName);
     Date getLastLogin();
     void setLastLogin(Date lastLogin);
+    String getRole();
+    void setRole(String role);
 }

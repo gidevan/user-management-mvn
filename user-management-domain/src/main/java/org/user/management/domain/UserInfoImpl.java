@@ -11,6 +11,7 @@ public class UserInfoImpl implements UserInfo {
 
     private String userName;
     private Date lastLogin;
+    private String role;
 
     @Override
     public String getUserName() {
@@ -30,5 +31,14 @@ public class UserInfoImpl implements UserInfo {
     @Override
     public void setLastLogin(Date lastLogin) {
         this.lastLogin = lastLogin;
+    }
+
+    @Override
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

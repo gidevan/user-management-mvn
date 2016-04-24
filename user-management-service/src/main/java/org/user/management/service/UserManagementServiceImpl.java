@@ -17,12 +17,13 @@ public class UserManagementServiceImpl implements UserManagementService {
     @Autowired
     private UserDao userDao;
 
-    private List<UserInfo> users;
-
     @Override
-    public boolean login(String user, String password) {
-        return false;
+    public UserInfo login(String user, String password) throws IllegalAccessException {
+        return userDao.login(user, password);
     }
 
-
+    @Override
+    public List<UserInfo> getUsers() {
+        return userDao.getUsers();
+    }
 }

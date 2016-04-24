@@ -20,9 +20,9 @@ public class UserDaoImpl implements UserDao {
 
     static {
        users = new ArrayList<>();
-       users.add(new User("User1", "Pass1"));
-       users.add(new User("User2", "Pass2"));
-       users.add(new User("User3", "Pass3"));
+       users.add(new User("User1", "Pass1", "admin"));
+       users.add(new User("User2", "Pass2", "user"));
+       users.add(new User("User3", "Pass3", "user"));
     }
     @Override
     public UserInfo login(String login, String password) throws IllegalAccessException {
@@ -31,6 +31,7 @@ public class UserDaoImpl implements UserDao {
                 UserInfo stored = new UserInfoImpl();
                 stored.setUserName(user.login);
                 stored.setLastLogin(new Date());
+                stored.setRole(user.role);
                 return stored;
             }
         }
@@ -38,13 +39,28 @@ public class UserDaoImpl implements UserDao {
 
     }
 
+    @Override
+    public List<UserInfo> getUsers() {
+        List<UserInfo> userInfos = new ArrayList<>();
+        for(User user : users) {
+            UserInfo userInfo = new UserInfoImpl();
+            userInfo.setUserName(user.login);
+            userInfo.setRole(user.role);
+            userInfos.add(userInfo);
+        }
+        return userInfos;
+    }
+
     private static class User {
         private String login;
         private String password;
+        private String role;
 
-        private User(String login, String password) {
+
+        private User(String login, String password, String role) {
             this.login = login;
             this.password = password;
+            this.role =role;
         }
     }
 }
