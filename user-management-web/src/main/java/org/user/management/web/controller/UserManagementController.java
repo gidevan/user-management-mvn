@@ -1,19 +1,17 @@
 package org.user.management.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.user.management.api.domain.UserInfo;
 import org.user.management.api.rest.Response;
 import org.user.management.api.rest.ResponseStatus;
 import org.user.management.api.service.UserManagementService;
 import org.user.management.rest.ResponseImpl;
 
-import java.util.List;
-
-@Controller
+@RestController
 @RequestMapping("/")
 public class UserManagementController {
 
