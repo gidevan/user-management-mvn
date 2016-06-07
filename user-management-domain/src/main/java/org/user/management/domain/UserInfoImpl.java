@@ -13,6 +13,7 @@ public class UserInfoImpl implements UserInfo {
     private Date lastLogin;
     private String role;
 
+
     @Override
     public String getUserName() {
         return userName;

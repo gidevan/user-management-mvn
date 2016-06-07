@@ -56,7 +56,6 @@ public class UserDaoImpl implements UserDao {
         private String password;
         private String role;
 
-
         private User(String login, String password, String role) {
             this.login = login;
             this.password = password;

@@ -15,30 +15,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    //@Autowired
-    private UserDetailsService userDetailsService;
-
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        //*
-        auth.inMemoryAuthentication()
-                .withUser("user")
-                .password("password")
-                .roles("USER")
-                .and()
-                    .withUser("user1")
-                    .password("password1")
-                    .roles("USER")
-                .and()
-                    .withUser("admin")
-                    .password("admin")
-                    .roles("ADMIN");
-         //*/
-        //auth.userDetailsService(userDetailsService);
-    }
+    private UserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         super.configure(http);
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
     }
 }
