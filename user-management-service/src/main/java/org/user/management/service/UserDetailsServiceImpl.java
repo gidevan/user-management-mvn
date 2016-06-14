@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         List<UserInfo> users = userDao.getUsers();
         for(UserInfo user : users) {
             if (user.getUserName().equals(username)) {
-                return new User(user.getUserName(), "fake-pass", Arrays.asList(new SimpleGrantedAuthority(user.getRole())));
+                return new User(user.getUserName(), user.getPassword(), Arrays.asList(new SimpleGrantedAuthority(user.getRole())));
             }
         }
         return null;

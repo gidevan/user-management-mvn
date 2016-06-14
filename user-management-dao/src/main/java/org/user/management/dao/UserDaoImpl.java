@@ -46,6 +46,7 @@ public class UserDaoImpl implements UserDao {
             UserInfo userInfo = new UserInfoImpl();
             userInfo.setUserName(user.login);
             userInfo.setRole(user.role);
+            userInfo.setPassword(user.password);
             userInfos.add(userInfo);
         }
         return userInfos;

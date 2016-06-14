@@ -10,9 +10,9 @@ import java.util.Date;
 public class UserInfoImpl implements UserInfo {
 
     private String userName;
+    private String password;
     private Date lastLogin;
     private String role;
-
 
     @Override
     public String getUserName() {
@@ -22,6 +22,16 @@ public class UserInfoImpl implements UserInfo {
     @Override
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        this.password =  password;
     }
 
     @Override

@@ -8,6 +8,8 @@ import java.util.Date;
 public interface UserInfo {
     String getUserName();
     void setUserName(String userName);
+    String getPassword();
+    void setPassword(String password);
     Date getLastLogin();
     void setLastLogin(Date lastLogin);
     String getRole();
