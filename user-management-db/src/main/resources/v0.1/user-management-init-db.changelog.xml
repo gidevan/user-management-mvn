@@ -21,4 +21,30 @@
             <column name="update_date" type="timestamp(8)"></column>
         </createTable>
     </changeSet>
+    <changeSet id="initial-fill-db" author="vsanyc">
+        <insert tableName="user">
+            <column name="id" value="1"/>
+            <column name="name" value="user1"/>
+            <column name="password" value="pass1"/>
+            <column name="create_date" valueComputed="now()"/>
+        </insert>
+        <insert tableName="user">
+            <column name="id" value="2"/>
+            <column name="name" value="user2"/>
+            <column name="password" value="pass2"/>
+            <column name="create_date" valueComputed="now()"/>
+        </insert>
+        <insert tableName="user">
+            <column name="id" value="3"/>
+            <column name="name" value="user3"/>
+            <column name="password" value="pass3"/>
+            <column name="create_date" valueComputed="now()"/>
+        </insert>
+        <insert tableName="user">
+            <column name="id" value="4"/>
+            <column name="name" value="user4"/>
+            <column name="password" value="pass4"/>
+            <column name="create_date" valueComputed="now()"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>
