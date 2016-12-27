@@ -23,6 +23,11 @@ public class UserManagementController {
         return "hello";
     }
 
+    @RequestMapping("/")
+    public String index() {
+        return "index";
+    }
+
     @RequestMapping("/login/{user}/{password}")
     @ResponseBody
     public Response login(@PathVariable String user, @PathVariable String password) {

@@ -46,5 +46,95 @@
             <column name="password" value="pass4"/>
             <column name="create_date" valueComputed="now()"/>
         </insert>
+        <insert tableName="user">
+            <column name="id" value="5"/>
+            <column name="name" value="admin"/>
+            <column name="password" value="admin"/>
+            <column name="create_date" valueComputed="now()"/>
+        </insert>
+        <rollback>
+            <delete tableName="user"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="add-role-table" author="vsanyc">
+        <createTable tableName="role">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="pk_role_id"/>
+            </column>
+            <column name="name" type="varchar2(255)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="create_date" type="timestamp(8)"></column>
+            <column name="update_date" type="timestamp(8)"></column>
+        </createTable>
+    </changeSet>
+    <changeSet id="add-user-role-table" author="vsanyc">
+        <createTable tableName="user_role">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="pk_user_role_id"/>
+            </column>
+            <column name="user_id" type="bigint">
+            </column>
+            <column name="role_id" type="bigint">
+            </column>
+            <column name="create_date" type="timestamp(8)"></column>
+            <column name="update_date" type="timestamp(8)"></column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_role"
+                                 constraintName="fk_ur_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"/>
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="user_role"
+                                 constraintName="fk_ur_role_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="role"/>
+    </changeSet>
+    <changeSet id="insert-data" author="vsanyc">
+        <insert tableName="role">
+            <column name="id" value="1"/>
+            <column name="name" value="admin"/>
+            <column name="create_date" valueComputed="now()"/>
+        </insert>
+        <insert tableName="role">
+            <column name="id" value="2"/>
+            <column name="name" value="user"/>
+            <column name="create_date" valueComputed="now()"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="id" value="1"/>
+            <column name="user_id" value="1"/>
+            <column name="role_id" value="2"/>
+            <column name="create_date" valueComputed="now()"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="id" value="2"/>
+            <column name="user_id" value="2"/>
+            <column name="role_id" value="2"/>
+            <column name="create_date" valueComputed="now()"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="id" value="3"/>
+            <column name="user_id" value="3"/>
+            <column name="role_id" value="2"/>
+            <column name="create_date" valueComputed="now()"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="id" value="4"/>
+            <column name="user_id" value="4"/>
+            <column name="role_id" value="2"/>
+            <column name="create_date" valueComputed="now()"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="id" value="5"/>
+            <column name="user_id" value="5"/>
+            <column name="role_id" value="1"/>
+            <column name="create_date" valueComputed="now()"/>
+        </insert>
+        <rollback>
+            <delete tableName="user_role"/>
+            <delete tableName="role"/>
+        </rollback>
     </changeSet>
 </databaseChangeLog>

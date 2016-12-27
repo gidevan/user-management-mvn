@@ -11,6 +11,7 @@
     <groupId>org.user.management</groupId>
     <artifactId>web</artifactId>
     <version>0.1</version>
+    <packaging>jar</packaging>
 
     <name>user-management-web</name>
 
@@ -77,6 +78,13 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                     <configuration>
                         <jvmArguments>
                             -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
